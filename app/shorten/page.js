@@ -23,16 +23,32 @@ const Shorten = () => {
       redirect: "follow"
     };
 
+    // fetch("/api/generate", requestOptions)
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     seturl("")
+    //     setshorturl("")
+    //     setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`)
+    //     console.log(result)
+    //     // alert(result.message)
+        
+    //   })
+    //   .catch((error) => console.err("Request failed",error));
     fetch("/api/generate", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        seturl("")
-        setshorturl("")
-        setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`)
-        console.log(result)
-        // alert(result.message)
-      })
-      .catch((error) => console.error(error));
+  .then(async (response) => {
+    const result = await response.json().catch(() => ({ success: false, message: 'Invalid JSON' }));
+    if (!response.ok) {
+      console.error("Server error:", result);
+    } else {
+      setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`);
+      seturl("")
+      setshorturl("")
+    }
+  })
+  .catch((error) => {
+    console.error("Request failed:", error);
+  });
+
   }
 
 
