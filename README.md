@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bitlinks
+
+Bitlinks is a simple and privacy-focused URL shortener built with [Next.js](https://nextjs.org), [MongoDB](https://www.mongodb.com/), and [Tailwind CSS](https://tailwindcss.com/).
+
+## Features
+
+- 🔗 Shorten long URLs with custom short text
+- 🚀 Instant redirection via unique short URLs
+- 🛡️ No tracking, no user data required
+- 🎨 Responsive UI with Tailwind CSS
+- 🗂️ Font optimized with [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+- 🗃️ MongoDB-backed persistent storage
+
+## Project Structure
+
+```
+.
+├── app/                # Next.js app directory
+│   ├── [shorturl]/     # Dynamic route for redirection
+│   ├── api/generate/   # API route for generating short URLs
+│   ├── fonts/          # Local fonts
+│   ├── shorten/        # Shorten URL page
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js         # Home page
+├── components/
+│   └── Navbar.js       # Navigation bar
+├── lib/
+│   └── mongodb.js      # MongoDB connection helper
+├── Montserrat/         # Montserrat font files and license
+├── public/             # Static assets
+├── .env.local          # Environment variables (not committed)
+├── package.json
+├── postcss.config.mjs
+├── tailwind.config.js
+├── jsconfig.json
+├── next.config.mjs
+└── README.md
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+git clone https://github.com/yourusername/bitlinks.git
+cd bitlinks
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Set up environment variables
 
-## Learn More
+Create a `.env.local` file in the root directory and add your MongoDB URI:
 
-To learn more about Next.js, take a look at the following resources:
+```
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_HOST=http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Run the development server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Home Page:** Introduction and call-to-action.
+- **Shorten Page:** Enter a long URL and a preferred short text, then generate your short link.
+- **Redirection:** Visiting `/[shorturl]` will redirect to the original URL if it exists.
+
+## Deployment
+
+You can deploy this app to [Vercel](https://vercel.com/) or any platform that supports Next.js.
+
+## License
+
+- Font: [Montserrat](Montserrat/OFL.txt) under SIL Open Font License 1.1
+- Code: MIT License (add your own LICENSE file if desired)
+
+---
+
+Made with ❤️ using Next.js, MongoDB, and
